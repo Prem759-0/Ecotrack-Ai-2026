@@ -21,10 +21,7 @@ export default function Navbar() {
         <div className="flex items-center gap-6 text-sm font-medium text-slate-300">
           <Link href="/dashboard" className="hover:text-green-400 transition-colors">Dashboard</Link>
           <Link href="/leaderboard" className="hover:text-green-400 transition-colors">Leaderboard</Link>
-          <button 
-            onClick={handleLogout}
-            className="text-slate-400 hover:text-red-400 transition-colors font-semibold"
-          >
+          <button onClick={handleLogout} className="text-slate-400 hover:text-red-400 transition-colors font-semibold">
             Logout
           </button>
         </div>
