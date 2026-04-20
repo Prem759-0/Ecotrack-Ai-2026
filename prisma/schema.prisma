@@ -1,0 +1,39 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String          @id @default(uuid())
+  email         String          @unique
+  name          String?
+  createdAt     DateTime        @default(now())
+  carbonEntries CarbonEntry[]
+  points        Points?
+}
+
+model CarbonEntry {
+  id               String   @id @default(uuid())
+  userId           String
+  transportEmission Float
+  foodEmission     Float
+  energyEmission   Float
+  totalEmission    Float
+  createdAt        DateTime @default(now())
+  user             User     @relation(fields: [userId], references: [id])
+}
+
+model Points {
+  id           String    @id @default(uuid())
+  userId       String    @unique
+  totalPoints  Int       @default(0)
+  streakDays   Int       @default(0)
+  lastActiveAt DateTime?
+  user         User      @relation(fields: [userId], references: [id])
+  
+  @@index([totalPoints])
+}
