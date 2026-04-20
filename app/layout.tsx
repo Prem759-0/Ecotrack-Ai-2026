@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import "./globals.css";
- 
+// THIS IS THE LINE THAT TURNS ON TAILWIND CSS 👇
+import "./globals.css"; 
+
 export const metadata: Metadata = {
   title: "EcoTrack AI | Actionable Climate Coaching",
   description: "Track your carbon footprint and turn saving the planet into a game.",
